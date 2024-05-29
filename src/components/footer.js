@@ -19,9 +19,9 @@ const FooterSection = () => {
       {' '}
       <Box
         sx={{
-          transform: 'skewY(-5deg)',
+          transform: 'skewY(-2deg)',
           mt: '-70px',
-          height: '160px',
+          height: '180px',
           width: '100%',
           backgroundColor: theme.palette.grey[900],
         }}
@@ -29,7 +29,7 @@ const FooterSection = () => {
       <Box
         sx={{
           position: 'relative',
-          mt: '-100px',
+          mt: '-150px',
           backgroundColor: theme.palette.background.default,
         }}
       >
@@ -74,13 +74,13 @@ const FooterSection = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 flexDirection: 'column',
-                transform: 'skewY(-5deg)',
+                transform: 'skewY(-2deg)',
               }}
             >
               {' '}
               <Box
                 sx={{
-                  transform: 'skewY(6deg)',
+                  transform: 'skewY(2deg)',
                   mx: 'auto',
                   maxWidth: '80%',
                 }}
