@@ -24,6 +24,7 @@ const HomeSection1 = () => {
         pb: { xs: '50px', md: '150px' },
         mb: { xs: '-20px', md: '-100px' },
       }}
+      id="Find Talent"
     >
       <Box
         sx={{ mt: '50px', pt: '50px', maxWidth: '700px', mx: 'auto' }}

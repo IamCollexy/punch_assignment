@@ -24,6 +24,7 @@ const HomeSection2 = () => {
         overflow: 'hidden',
         height: { xs: '900px', md: '600px' },
       }}
+      id="Find Talents"
     >
       <Grid
         container

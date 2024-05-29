@@ -69,7 +69,7 @@ export default function TopNavbar() {
           'Contact Us',
         ].map((text) => (
           <ListItem button key={text}>
-            <Link href="#" style={styleLink}>
+            <Link href={`#${text}`} style={styleLink}>
               {text}
             </Link>
           </ListItem>
@@ -81,7 +81,7 @@ export default function TopNavbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        position="static"
+        position="fixed"
         sx={{ bgcolor: theme.palette.primary.main }}
       >
         <Toolbar>
@@ -133,19 +133,19 @@ export default function TopNavbar() {
                   width: { xs: 'auto', sm: '500px' },
                 }}
               >
-                <Link href="#" style={styleLink}>
+                <Link href="#Find Work" style={styleLink}>
                   Find Work
                 </Link>
-                <Link href="#" style={styleLink}>
+                <Link href="#Find Talent" style={styleLink}>
                   Find Talent
                 </Link>
-                <Link href="#" style={styleLink}>
+                <Link href="#Articles" style={styleLink}>
                   Articles
                 </Link>
-                <Link href="#" style={styleLink}>
+                <Link href="#About Us" style={styleLink}>
                   About Us
                 </Link>
-                <Link href="#" style={styleLink}>
+                <Link href="#Contact Us" style={styleLink}>
                   Contact Us
                 </Link>
               </Box>

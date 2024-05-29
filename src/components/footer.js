@@ -25,6 +25,7 @@ const FooterSection = () => {
           width: '100%',
           backgroundColor: theme.palette.grey[900],
         }}
+        id="Contact Us"
       ></Box>
       <Box
         sx={{

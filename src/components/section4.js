@@ -11,6 +11,7 @@ const HomeSection4 = () => {
         bgcolor: theme.palette.primary.light,
         px: '40px',
       }}
+      id="Articles"
     >
       <Grid
         container

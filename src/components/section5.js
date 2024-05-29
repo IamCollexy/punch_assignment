@@ -14,6 +14,7 @@ const HomeSection5 = () => {
         pb: '200px',
         mt: '-100px',
       }}
+      id="About Us"
     >
       <Grid
         container
@@ -66,7 +67,7 @@ const HomeSection5 = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    p: 4,
+                    p: { xs: 4, md: 2 },
                   }}
                 >
                   <Typography
