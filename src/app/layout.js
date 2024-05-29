@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from '../../store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from '../../store/store';
+import TopNavbar from '@/components/navbar/topNavbar';
 const openSans = Open_Sans({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
@@ -18,11 +19,14 @@ export default function RootLayout({ children }) {
           Punch Interview Stage 2, To build a landing Page
         </title>
       </head>
-      <body className={inter.className}>
+      <body className={openSans.className}>
         <CssBaseline enableColorScheme />
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            <ThemeProvider theme={theme}>
+              <TopNavbar />
+              {children}
+            </ThemeProvider>
           </PersistGate>
         </Provider>
       </body>

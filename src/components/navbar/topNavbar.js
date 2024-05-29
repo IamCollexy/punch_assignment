@@ -7,28 +7,34 @@ import {
   List,
   ListItem,
   useMediaQuery,
+  IconButton,
+  AppBar,
+  Toolbar,
 } from '@mui/material';
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import CloseIcon from '@mui/icons-material/Close';
+import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 
 export default function TopNavbar() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [currentUserEmail, setCurrentUserEmail] = useState(null);
   const largeScreenDown = useMediaQuery('(min-width:1200px)');
   const user = useSelector((state) => state.user);
   const theme = useTheme();
+
   const styleLink = {
     fontSize: '14px',
     textDecoration: 'none',
     color: 'inherit',
   };
 
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  useEffect(() => {
+    setCurrentUserEmail(user?.email);
+  }, [user]);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -51,7 +57,6 @@ export default function TopNavbar() {
         sx={{ px: '10px', display: 'flex', justifyContent: 'end' }}
       >
         <IconButton>
-          {' '}
           <CloseIcon />
         </IconButton>
       </Box>
@@ -62,7 +67,7 @@ export default function TopNavbar() {
           'Articles',
           'About Us',
           'Contact Us',
-        ].map((text, index) => (
+        ].map((text) => (
           <ListItem button key={text}>
             <Link href="#" style={styleLink}>
               {text}
@@ -95,22 +100,19 @@ export default function TopNavbar() {
                 onClick={toggleDrawer(true)}
               >
                 <MenuIcon />
-              </IconButton>{' '}
+              </IconButton>
               <Link
                 href="/"
                 style={{
                   display: !largeScreenDown ? 'none' : 'block',
                 }}
               >
-                {' '}
                 <Image
-                  style={{
-                    display: { xs: 'none', lg: 'block' },
-                  }}
+                  style={{ display: { xs: 'none', lg: 'block' } }}
                   src={'/navLogo.svg'}
                   width={200}
                   height={40}
-                />{' '}
+                />
               </Link>
             </Grid>
             <Grid
@@ -157,8 +159,13 @@ export default function TopNavbar() {
                 justifyContent: 'center',
               }}
             >
-              {user ? (
-                <Typography variant="body1">{user?.email}</Typography>
+              {currentUserEmail ? (
+                <Typography
+                  variant="body1"
+                  color={theme.palette.common.white}
+                >
+                  {currentUserEmail}
+                </Typography>
               ) : (
                 <Box
                   sx={{
@@ -168,9 +175,20 @@ export default function TopNavbar() {
                     justifyContent: 'space-around',
                   }}
                 >
-                  <Typography variant="body2" color="inherit">
-                    Login
-                  </Typography>
+                  <Link
+                    href={'/auth'}
+                    style={{
+                      textDecoration: 'none',
+                      marginRight: '10px',
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      color={theme.palette.common.white}
+                    >
+                      Login
+                    </Typography>
+                  </Link>
                   <Typography
                     sx={{
                       bgcolor: theme.palette.common.white,
@@ -179,7 +197,6 @@ export default function TopNavbar() {
                       marginLeft: '8px',
                       height: '43px',
                       alignContent: 'center',
-
                       fontWeight: 500,
                       fontSize: { xs: '12px', md: '14px' },
                     }}

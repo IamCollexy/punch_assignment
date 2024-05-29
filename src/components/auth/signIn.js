@@ -14,13 +14,15 @@ import * as Yup from 'yup';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
-import { setUser } from '@/store/slices/userSlice';
+import { setUser } from '../../../store/slices/userSlice';
 import { setIsAuth } from '../../../store/slices/isAuthSlice';
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address'),
-  password: Yup.string().required('Password is required'),
-  // .min(8, 'Password must be at least 8 characters'),
+  password: Yup.string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters'),
 });
 
 const LoginForm = ({ onSubmit }) => {
@@ -28,7 +30,7 @@ const LoginForm = ({ onSubmit }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  c;
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -37,12 +39,12 @@ const LoginForm = ({ onSubmit }) => {
     validationSchema: LoginSchema,
 
     onSubmit: async (values, { resetForm }) => {
-      setShowNotification(false);
-
-      dispatch(setUser(JSON.stringify(values)));
+      console.log(values);
+      dispatch(
+        setUser({ email: values.email, password: values.password })
+      );
       dispatch(setIsAuth({ isAuth: true, accessToken: '1234' }));
       router.push('/');
-      setShowNotification(true);
     },
   });
 
@@ -56,6 +58,7 @@ const LoginForm = ({ onSubmit }) => {
       sx={{
         backgroundColor: theme.palette.common.white,
         minHeight: '100vh',
+        mt: '30px',
       }}
     >
       <Container
@@ -63,7 +66,6 @@ const LoginForm = ({ onSubmit }) => {
         onSubmit={formik.handleSubmit}
         maxWidth="sm"
         sx={{
-          // height: type !== '' ? '90vh' : '60vh',
           height: '75vh',
           width: { xs: '90%', md: '500px' },
           margin: 'auto',
@@ -157,9 +159,8 @@ const LoginForm = ({ onSubmit }) => {
               padding: '10px',
               color: theme.palette.common.white,
             }}
-            // disabled={isLoading}
           >
-            {isLoading ? <CircularProgress size={14} /> : ' Login'}
+            Login
           </Button>
         </Stack>
       </Container>

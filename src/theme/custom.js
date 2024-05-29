@@ -13,7 +13,7 @@ export const customTheme = {
     },
     secondary: {
       main: '#FFBE2E',
-      light: '#C7F4C2',
+      light: '#94B28E',
       dark: '#371',
       contrastText: '#f9f9f9',
     },

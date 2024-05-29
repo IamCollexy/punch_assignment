@@ -55,7 +55,7 @@ const HomeHero = () => {
     const active = router.asPath === href;
 
     return (
-      <Link href={href} passHref>
+      <Link href={href} passHref style={{ textDecoration: 'none' }}>
         <Typography
           color={
             active
@@ -65,13 +65,14 @@ const HomeHero = () => {
           style={{
             padding: '10px 20px',
             borderRadius: '5px',
-            textDecoration: 'none',
-
             backgroundColor: active
               ? theme.palette.action.hover
               : 'transparent',
             '&:hover': {
-              backgroundColor: theme.palette.action.hover,
+              backgroundColor: theme.palette.secondary.main,
+            },
+            '&:active': {
+              color: theme.palette.secondary.main,
             },
           }}
         >
