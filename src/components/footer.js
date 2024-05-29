@@ -99,7 +99,7 @@ const FooterSection = () => {
             </Box>
             <Grid container spacing={2} sx={{ pt: '150px' }}>
               <Grid item xs={12} md={3}>
-                <Stack spacing={2}>
+                <Stack spacing={2} mt={4}>
                   <Link href="/">
                     {' '}
                     <Image
