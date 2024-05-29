@@ -1,11 +1,11 @@
 'use client';
 import { Open_Sans } from 'next/font/google';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import theme from '@/src/theme/theme';
+import theme from '@/theme/theme';
 import { Provider } from 'react-redux';
-import store from '@/store/store';
+import store from '../../store/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { persistor } from '@/store/store';
+import { persistor } from '../../store/store';
 const openSans = Open_Sans({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
